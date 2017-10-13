@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<title>Bitcoin Data</title>
+	<meta charset="utf-8" />
+	
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+    <!--<link href="./stylesheet.css" rel="stylesheet">-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	
+</head>
+
+<body class="body" style="background-color:#f6f6f6">
+	<div class="container-fluid" style="min-height:95%; ">
+		<div class="row">
+			  <div class="col-sm-10">
+				  <br>
+				  <center>
+				  <h3>Please enter the Market, Currency and date to get Bitcoin data</h3>
+				  </center>
+			  </div>
+		</div><hr>
+
+		<div class="row">
+		  <div class="col-sm-2">
+		  <br>
+		  <form id="myform" name="myform" action="/get_name/" method="post">
+		{% csrf_token %}
+			{{ form }}		  
+			<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+				<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle status1" type="button" data-toggle="dropdown" label='Market Name'  id= "marketing_id">Market 
+				<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu dropdown1-inverse" id= "market_id">
+					<li><a href="#">Test1</a>
+					</li>
+					<li><a href="#">Test2</a>
+					</li>
+				</ul>
+				</div>	
+			</div> <!--well bs-sidebar affix-->
+		<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle status2" type="button" data-toggle="dropdown">Currency
+				<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu dropdown2-inverse">
+					<li><a href="#">USD</a>
+					</li>
+					<li><a href="#">Euro</a>
+					</li>
+				</ul>
+			</div>				
+		</div> <!--well bs-sidebar affix-->
+	<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">  	
+            <div class="form-group">
+			Start Date
+                <div class='input-group date'>
+                    <input type='text' class="form-control" id='datepicker1' label='Start Date' "/>
+                </div>
+            </div>     
+	</div>
+	<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">  	
+            <div class="form-group">
+			End Date
+                <div class='input-group date'>
+                    <input type='text' class="form-control" id='datepicker2'/>
+                </div>
+            </div>     
+	</div>
+		<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+			<p class="text-center">
+			<button type="submit" class="btn btn-danger btn-lg">Submit</button>
+			</p>
+		</div>
+		
+		
+		  </div> <!--col-sm-2-->
+		  <form>
+		  
+		  <div class="col-sm-10">
+			<div class='container-fluid'>
+			<br><br>
+			   {% block content %}
+			   {% endblock %}	
+			</div>
+		  </div>
+		</div> 
+	</div>
+	</div>
+	
+
+	<script>
+	   $( function() {
+		$("#datepicker1").datepicker();
+		} );
+  </script>
+  	<script>
+	   $( function() {
+		$("#datepicker2").datepicker();
+		} );
+  </script>
+<script>
+ $(function(){
+      $('.dropdown2-inverse li > a').click(function(e){
+      $('.status2').text(this.innerHTML);
+      });
+      });
+</script>
+<script>
+ $(function(){
+      $('.dropdown1-inverse li > a').click(function(e){
+      $('.status1').text(this.innerHTML);
+      });
+      });
+</script>
+<!--
+<script type="text/javascript">
+var market_value = document.getElementById("marketing_id").innerText;
+
+</script-->
+
+</body>
+
+
+
+	</html>
